@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="in.css">
+</head>
+<body>
+
+<div class="bgm-color-container" id="bgm-color-container"></div>
+
+<div class="container">
+    <div class="text-content">
+        <h2 style="font-family: 'Lora', serif; font-weight: 400; font-style: italic;">Immerse in pure sound, where innovation meets comfort</h2>
+        <h1 class="product-title">AirPods 4</h1>
+        <h2>By boAt</h2>
+        <p id="product-description" class="product-description">These earpods come in a timeless dark blue, offering a classic and elegant look for any occasion.</p>
+        <div class="buttons">
+            <a href="#product-specs-section" class="btn btn-know-more" id="know-more-btn">Know More</a>
+            <a href="#" class="btn btn-buy-now">Buy Now</a>
+        </div>
+    </div>
+    <div class="image-content">
+        <img id="main-product-image" class="product-image" src="boat4.webp" alt="Boat Earbuds - Dark Blue">
+        <div class="color-options">
+            <div class="color-swatch green" 
+                data-color="boat1.webp" 
+                data-container-bg="#e3f8f1" 
+                data-primary="#1e3427" 
+                data-secondary="#3c5740" 
+                data-accent="#55a88e" 
+                data-btn-know-more-bg="#e3f8f1" 
+                data-btn-know-more-text="#1e3427" 
+                data-description="This model offers a vibrant, energetic green finish for a fresh and eye-catching style."
+                data-bgm-start="#d1f3e7"
+                data-bgm-end="#c7ebdd"
+                data-specs-title="Green Specifications"
+                data-specs-list="Battery: Up to 18 hrs, Drivers: 10mm, Connectivity: Bluetooth 5.3">
+            </div>
+            <div class="color-swatch blue-green" 
+                data-color="boat2.webp" 
+                data-container-bg="#e6f5f9" 
+                data-primary="#1f3b46" 
+                data-secondary="#3a5c68" 
+                data-accent="#2e4d58" 
+                data-btn-know-more-bg="#e6f5f9" 
+                data-btn-know-more-text="#1f3b46" 
+                data-description="Featuring a cool blue-green hue, these earpods provide a modern, refreshing aesthetic."
+                data-bgm-start="#d6e8ef"
+                data-bgm-end="#d0e2e8"
+                data-specs-title="Blue-Green Specifications"
+                data-specs-list="Battery: Up to 20 hrs, Drivers: 12mm, Connectivity: Bluetooth 5.4">
+            </div>
+            <div class="color-swatch dark-green" 
+                data-color="boat3.webp" 
+                data-container-bg="#e8f3e7" 
+                data-primary="#2c452b" 
+                data-secondary="#4b6a48" 
+                data-accent="#669e63" 
+                data-btn-know-more-bg="#e8f3e7" 
+                data-btn-know-more-text="#2c452b" 
+                data-description="The deep, dark green color gives these earpods a sleek, sophisticated, and grounded appearance."
+                data-bgm-start="#d9e8d8"
+                data-bgm-end="#d1e0d0"
+                data-specs-title="Dark Green Specifications"
+                data-specs-list="Battery: Up to 15 hrs, Drivers: 8mm, Connectivity: Bluetooth 5.2">
+            </div>
+            <div class="color-swatch dark-blue" 
+                data-color="boat4.webp" 
+                data-container-bg="#e3e6f8" 
+                data-primary="#10192a" 
+                data-secondary="#293c52" 
+                data-accent="#1a2542" 
+                data-btn-know-more-bg="#e3e6f8" 
+                data-btn-know-more-text="#10192a" 
+                data-description="These earpods come in a timeless dark blue, offering a classic and elegant look for any occasion."
+                data-bgm-start="#b8c1ec"
+                data-bgm-end="#d9e0f3"
+                data-specs-title="Dark Blue Specifications"
+                data-specs-list="Battery: Up to 22 hrs, Drivers: 10mm, Connectivity: Bluetooth 5.3">
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="product-specs-section">
+    <div class="specs-content">
+        <h2 id="specs-title">Specifications</h2>
+        <ul id="specs-list">
+            </ul>
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="#" class="btn btn-know-more">Back to Top</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mainImage = document.getElementById('main-product-image');
+        const colorSwatches = document.querySelectorAll('.color-swatch');
+        const root = document.documentElement;
+        const container = document.querySelector('.container');
+        const productDescription = document.getElementById('product-description');
+        const bgmContainer = document.getElementById('bgm-color-container');
+        const specsTitle = document.getElementById('specs-title');
+        const specsList = document.getElementById('specs-list');
+
+        function updateProduct(swatch) {
+            const newImageSrc = swatch.getAttribute('data-color');
+            const bgColor = swatch.getAttribute('data-container-bg');
+            const primaryColor = swatch.getAttribute('data-primary');
+            const secondaryColor = swatch.getAttribute('data-secondary');
+            const accentColor = swatch.getAttribute('data-accent');
+            const knowMoreBg = swatch.getAttribute('data-btn-know-more-bg');
+            const knowMoreText = swatch.getAttribute('data-btn-know-more-text');
+            const description = swatch.getAttribute('data-description');
+            const bgmStart = swatch.getAttribute('data-bgm-start');
+            const bgmEnd = swatch.getAttribute('data-bgm-end');
+            const specsTitleText = swatch.getAttribute('data-specs-title');
+            const specsListText = swatch.getAttribute('data-specs-list');
+            
+            mainImage.src = newImageSrc;
+            
+            // Update CSS variables for the color scheme
+            root.style.setProperty('--primary-text-color', primaryColor);
+            root.style.setProperty('--secondary-text-color', secondaryColor);
+            root.style.setProperty('--accent-color', accentColor);
+            root.style.setProperty('--button-know-more-bg', knowMoreBg);
+            root.style.setProperty('--button-know-more-text', knowMoreText);
+            root.style.setProperty('--container-bg-color', bgColor);
+            
+            // Update the BGM color gradient
+            root.style.setProperty('--bgm-color-start', bgmStart);
+            root.style.setProperty('--bgm-color-end', bgmEnd);
+
+            // Update the product description text
+            productDescription.textContent = description;
+
+            // Update the specifications section
+            specsTitle.textContent = specsTitleText;
+            specsList.innerHTML = ''; // Clear previous specs
+            const specsArray = specsListText.split(', ');
+            specsArray.forEach(spec => {
+                const li = document.createElement('li');
+                li.textContent = spec;
+                specsList.appendChild(li);
+            });
+        }
+
+        colorSwatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                updateProduct(swatch);
+            });
+        });
+
+        // Initialize with the default dark blue color's specs
+        const defaultSwatch = document.querySelector('.color-swatch.dark-blue');
+        updateProduct(defaultSwatch);
+    });
+</script>
+
+</body>
+</html>
