@@ -34,7 +34,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Parallax effect on the body's background image */
 body::before {
     content: '';
     position: fixed;
@@ -160,12 +159,10 @@ h1, h2 {
     z-index: 10;
     animation: zoomIn 1s forwards, floating 4s infinite ease-in-out;
     animation-delay: 1s;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: transform 0.4s ease;
 }
 
 .image-content:hover .product-image {
-    opacity: 0;
-    transform: scale(0.8) translateY(-20px);
     animation: none;
 }
 
@@ -278,85 +275,72 @@ h1, h2 {
     100% { background-size: 110%; }
 }
 
-/* --- Mobile Responsiveness --- */
+/* ------------------------------------------- */
+/* Mobile Responsiveness */
+/* ------------------------------------------- */
 
-/* For screens smaller than 768px (e.g., tablets and phones) */
 @media (max-width: 768px) {
-    body {
-        padding: 20px;
-    }
-    
     .container {
-        flex-direction: column; /* Stack the content vertically */
-        text-align: center;
+        flex-direction: column;
+        width: 90%;
         padding: 20px;
-    }
-
-    .text-content, .image-content {
-        width: 100%;
-        padding: 0;
-        margin-bottom: 20px; /* Add space between sections */
     }
 
     .text-content {
-        order: 2; /* Put text below the image on mobile */
+        padding: 10px;
+        text-align: center;
+        order: 2; /* Puts text content below the image on mobile */
     }
 
     .image-content {
-        order: 1; /* Put image at the top on mobile */
-        margin-top: 20px;
+        order: 1; /* Puts image content above the text on mobile */
     }
 
     .product-title {
-        font-size: 2.5em; /* Smaller font for mobile */
+        font-size: 2.5em;
     }
 
     .product-description {
-        font-size: 1em; /* Smaller font for mobile */
+        font-size: 1em;
     }
 
     .buttons {
-        flex-direction: column; /* Stack buttons vertically */
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        margin-top: 20px;
+        gap: 10px;
     }
 
     .btn {
-        margin: 10px 0; /* Add vertical margin for buttons */
-        width: 80%;
+        width: 100%;
+        margin: 0;
     }
-    
-    .image-content:hover .color-options {
-        display: none; /* Hide hover effect on mobile to prevent accidental triggers */
+
+    .product-image {
+        max-width: 300px;
+        margin-bottom: 20px;
     }
-    
-    /* Show color options permanently on mobile */
-    .image-content .color-options {
-        position: static;
+
+    .color-options {
+        position: static; /* Let color options flow with the document */
         transform: none;
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        background-color: transparent;
-        box-shadow: none;
-    }
-    
-    .color-swatch {
-        width: 30px;
-        height: 30px;
-        border: 1px solid #fff;
+        margin-top: 15px;
+        gap: 10px;
     }
 
     #product-specs-section {
         width: 90%;
         padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
-    
+
     #product-specs-section h2 {
         font-size: 1.5em;
     }
-    
+
     #product-specs-section li {
         font-size: 0.9em;
+        text-align: center;
     }
 }
